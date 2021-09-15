@@ -1,8 +1,19 @@
-var p = document.getElementById('wmd-input');
-if (p) {
-    p = p.parentNode;
-    var ignore = function(e){e.stopPropagation();};
-    p.addEventListener('keydown', ignore, true);
-    p.addEventListener('keypress', ignore, true);
-    p.addEventListener('keyup', ignore, true);
+const disableShortcuts = (p) => {
+    if (p) {
+        const pr = p.parentNode;
+        const ignore = (e) => { e.stopPropagation(); };
+        pr.addEventListener('keydown', ignore, true);
+        pr.addEventListener('keypress', ignore, true);
+        pr.addEventListener('keyup', ignore, true);
+    }
+}
+
+disableShortcuts(document.getElementById('wmd-input'))
+
+const editor = document.querySelector('div.js-review-editor')
+if (editor) {
+    const observer = new MutationObserver(() => {
+        disableShortcuts(document.querySelector('[id^="wmd-input"]'))
+    });
+    observer.observe(editor, {subtree: true, childList: true});
 }
