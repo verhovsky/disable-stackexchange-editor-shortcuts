@@ -1,26 +1,20 @@
 {
     "name": "No StackExchange Editor Keyboard Shortcuts",
-    "manifest_version": 2,
-    "version": "1.2",
+    "manifest_version": 3,
+    "version": "1.3",
     "icons": { "16": "icon/16.png",
                "48": "icon/48.png",
                "128": "icon/128.png"},
     "content_scripts": [{
         "js": ["index.js"],
         "matches": [
-            "*://stackoverflow.com/*",
             "*://*.stackoverflow.com/*",
-            "*://superuser.com/*",
-            "*://meta.superuser.com/*",
-            "*://serverfault.com/*",
-            "*://meta.serverfault.com/*",
-            "*://askubuntu.com/*",
-            "*://meta.askubuntu.com/*",
             "*://*.stackexchange.com/*",
-            "*://answers.onstartups.com/*",
-            "*://meta.answers.onstartups.com/*",
-            "*://stackapps.com/*",
-            "*://apple.stackexchange.com/*"
+            "*://*.serverfault.com/*",
+            "*://*.superuser.com/*",
+            "*://*.askubuntu.com/*",
+            "*://*.mathoverflow.net/*",
+            "*://stackapps.com/*"
         ]
     }]
 }
