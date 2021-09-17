@@ -8,7 +8,7 @@ const disableShortcuts = (p) => {
     }
 }
 
-disableShortcuts(document.getElementById('wmd-input'))
+disableShortcuts(document.querySelector('[id^="wmd-input"]'))
 
 const editor = document.querySelector('div.js-review-editor')
 if (editor) {
