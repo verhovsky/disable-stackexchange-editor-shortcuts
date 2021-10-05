@@ -8,12 +8,17 @@ const disableShortcuts = (p) => {
     }
 }
 
-disableShortcuts(document.querySelector('[id^="wmd-input"]'))
+disableShortcuts(document.querySelector('[id^="wmd-input"]'));
 
-const editor = document.querySelector('div.js-review-editor')
-if (editor) {
-    const observer = new MutationObserver(() => {
-        disableShortcuts(document.querySelector('[id^="wmd-input"]'))
-    });
-    observer.observe(editor, {subtree: true, childList: true});
-}
+const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+        for (const addedNode of mutation.addedNodes) {
+            if (addedNode.nodeType === Node.ELEMENT_NODE
+                && addedNode.tagName.toUpperCase() === 'FORM'
+                && addedNode.classList.contains('inline-post')) {
+                disableShortcuts(addedNode.querySelector('[id^="wmd-input"]'));
+            }
+        }
+    }
+});
+observer.observe(document, {subtree: true, childList: true});
