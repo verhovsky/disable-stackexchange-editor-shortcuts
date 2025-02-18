@@ -16,5 +16,10 @@
             "*://*.mathoverflow.net/*",
             "*://stackapps.com/*"
         ]
-    }]
+    }],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "foooooooooooooooooooooo@example.com"
+        }
+    }
 }
